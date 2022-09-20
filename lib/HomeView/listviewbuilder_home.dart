@@ -20,8 +20,7 @@ class ListViewHome {
                 context,
                 MaterialPageRoute(
                     builder: (context) => viewDetail(
-                          listafilmes![index].id!,
-                        )),
+                        listafilmes![index].id!, listafilmes![index].title)),
               );
             },
             child: Container(

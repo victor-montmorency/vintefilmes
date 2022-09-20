@@ -23,7 +23,7 @@ Future fetchdetail(id) async {
   var url = 'https://desafio-mobile.nyc3.digitaloceanspaces.com/movies-v2/$id';
   var response = await http.get(Uri.parse(url));
   print(response.body);
-  var json = jsonDecode(response.body);
+  var json = jsonDecode(utf8.decode(response.bodyBytes));
   print(json.runtimeType);
   return json;
 }

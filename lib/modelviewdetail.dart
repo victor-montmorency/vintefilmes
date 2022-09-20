@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:vintefilmes/DetailView/ViewDetail.dart';
 import 'package:vintefilmes/repository.dart';
-import 'dart:convert' show utf8;
+import 'DetailView/ViewDetail.dart';
 
 class SecondRoute extends StatelessWidget {
   final int? id;
@@ -18,15 +15,15 @@ class SecondRoute extends StatelessWidget {
         switch (snapshot.connectionState) {
           case ConnectionState.none:
             print('case1');
-            return Center(child: Text("none"));
+            return const Center(child: Text("none"));
           case ConnectionState.active:
             print('case2');
 
-            return Center(child: Text("active"));
+            return const Center(child: Text("active"));
           case ConnectionState.waiting:
             print('case3');
 
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           case ConnectionState.done:
             print('case4');
             return bodycontent(snapshot.data);
@@ -34,29 +31,4 @@ class SecondRoute extends StatelessWidget {
       },
     );
   }
-}
-
-bodycontent(info) {
-  return Column(
-    children: [
-      Image.network(
-        info['poster_url'],
-        errorBuilder: (context, error, stackTrace) => Container(
-          width: 200,
-          height: 300,
-          child: Text('Não Foi Possível carregar a imagem'),
-        ),
-      ),
-      Text(
-        'Overview',
-        style: TextStyle(fontWeight: FontWeight.bold),
-      ),
-      Text(info['overview']),
-      Text('Budget: \$' + info['budget'].toString()),
-      Text(info['genres'].toString()),
-      Text(info['adult'] == true
-          ? 'Filme inapropriado para crianças'
-          : 'Filme livre'),
-    ],
-  );
 }
