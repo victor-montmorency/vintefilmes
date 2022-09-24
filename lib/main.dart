@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:vintefilmes/modelviewhome.dart';
 import 'modelviewhome.dart';
 
@@ -27,20 +28,8 @@ class HomePage extends StatelessWidget {
         title: Text('20 Filmes TMDB'),
         backgroundColor: Color.fromARGB(255, 32, 64, 81),
       ),
-      body: internettest(),
+      body: modelView(),
       backgroundColor: Color.fromARGB(255, 228, 227, 227),
     );
   }
-}
-
-Widget internettest() {
-  var teste;
-  try {
-    teste = modelView();
-  } catch (e) {
-    teste = Center(
-      child: Text('Erro de conexexão'),
-    );
-  }
-  return teste;
 }
